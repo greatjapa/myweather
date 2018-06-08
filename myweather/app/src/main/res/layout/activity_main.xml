@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+
+            <TextView
+                android:id="@+id/key01ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cidade" />
+
+            <TextView
+                android:id="@+id/value01ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/key02ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Timezone" />
+
+            <TextView
+                android:id="@+id/value02ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/key03ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Min" />
+
+            <TextView
+                android:id="@+id/value03ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/key04ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max" />
+
+            <TextView
+                android:id="@+id/value04ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/key05ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temp" />
+
+            <TextView
+                android:id="@+id/value05ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+</android.support.constraint.ConstraintLayout>
