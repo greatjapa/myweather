@@ -35,6 +35,8 @@ public class ServicoMetaweather extends Servico {
             JSONObject first = array.getJSONObject(0);
             Double temp = first.getDouble("the_temp");
             cidade.setTemperaturaMedia(temp);
+            Double humidade = first.getDouble("humidity");
+            cidade.setHumidadeMedia(humidade);
         } catch (JSONException e) {
             throw new IllegalStateException("Erro ao alimentar JSON na cidade " + cidade.getNome(), e);
         }
