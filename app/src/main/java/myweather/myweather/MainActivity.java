@@ -59,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
             viewById.setText(rio.getNome());
 
             viewById = activity.findViewById(R.id.value05ID);
-            viewById.setText(rio.getTemperaturaMedia().toString());
+            viewById.setText(rio.getTemperaturaMediaAtual().toString());
 
             viewById = activity.findViewById(R.id.value06ID);
-            viewById.setText(rio.getHumidadeMedia().toString());
+            viewById.setText(rio.getUmidadeMediaAtual().toString());
         }
     }
 }

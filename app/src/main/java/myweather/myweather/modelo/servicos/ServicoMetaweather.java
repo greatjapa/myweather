@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import myweather.myweather.modelo.Medicao;
 import myweather.myweather.modelo.cidades.Cidade;
 
 public class ServicoMetaweather extends Servico {
@@ -29,17 +30,13 @@ public class ServicoMetaweather extends Servico {
     }
 
     @Override
-    protected void alimentarDados(JSONObject dados, Cidade cidade) {
-        try {
-            JSONArray array = dados.getJSONArray("consolidated_weather");
-            JSONObject first = array.getJSONObject(0);
-            Double temp = first.getDouble("the_temp");
-            cidade.setTemperaturaMedia(temp);
-            Double humidade = first.getDouble("humidity");
-            cidade.setHumidadeMedia(humidade);
-        } catch (JSONException e) {
-            throw new IllegalStateException("Erro ao alimentar JSON na cidade " + cidade.getNome(), e);
-        }
+    protected void alimentarMedicao(Medicao medicao, JSONObject dados) throws JSONException {
+        JSONArray array = dados.getJSONArray("consolidated_weather");
+        JSONObject first = array.getJSONObject(0);
+        Double temp = first.getDouble("the_temp");
+        medicao.setTemperaturaAtual(temp);
+        Double umidade = first.getDouble("humidity");
+        medicao.setUmidadeAtual(umidade);
     }
 }
 

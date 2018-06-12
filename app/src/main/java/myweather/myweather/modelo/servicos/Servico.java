@@ -4,6 +4,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import myweather.myweather.modelo.Medicao;
 import myweather.myweather.modelo.cidades.Cidade;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -18,7 +19,20 @@ public abstract class Servico {
         String url = montaURL(cidade);
         Request request = new Request.Builder().url(url).build();
         JSONObject dados = this.invocar(request);
-        this.alimentarDados(dados, cidade);
+        Medicao medicao = new Medicao(this);
+
+        // Por default, a hora de leitura é agora. Alguns servicos podem substituir esse horario
+        // com o momento real de leitura do sensor, mas nem todos os servicos fornecem esse dado.
+        medicao.setHoraLeitura(System.currentTimeMillis());
+
+        try {
+            this.alimentarMedicao(medicao, dados);
+        } catch (JSONException e) {
+            throw new IllegalStateException("Erro ao parsear JSON do "
+                    + "servico " + this.getNome() + " para cidade " + cidade.getNome(), e);
+        }
+
+        cidade.getMedicoes().add(medicao);
     }
 
     protected JSONObject invocar(Request request) {
@@ -37,5 +51,5 @@ public abstract class Servico {
 
     protected abstract String getNome();
     protected abstract String montaURL(Cidade cidade);
-    protected abstract void alimentarDados(JSONObject dados, Cidade cidade);
+    protected abstract void alimentarMedicao(Medicao medicao, JSONObject dados) throws JSONException;
 }
