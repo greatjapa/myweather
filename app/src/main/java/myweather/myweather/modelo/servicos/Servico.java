@@ -3,6 +3,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import myweather.myweather.modelo.Medicao;
 import myweather.myweather.modelo.cidades.Cidade;
@@ -11,6 +12,17 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public abstract class Servico {
+
+    // ID de cada cidade no servico.
+    private HashMap<String, String> codigosPorCidade = new HashMap<>();
+
+    protected void setCodigoCidade(String nomeCidade, String codigo) {
+        this.codigosPorCidade.put(codigo, nomeCidade);
+    }
+
+    protected String getCodigoCidade(String nomeCidade) {
+        return this.codigosPorCidade.get(nomeCidade);
+    }
 
     /**
      * Busca os dados para uma dada cidade e a alimenta com as informacoes retornadas.

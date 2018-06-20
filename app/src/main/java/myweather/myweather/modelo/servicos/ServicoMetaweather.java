@@ -4,18 +4,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-
 import myweather.myweather.modelo.Medicao;
 import myweather.myweather.modelo.cidades.Cidade;
 
 public class ServicoMetaweather extends Servico {
 
-    // ID de cada cidade no servico.
-    private HashMap<String, String> codigosPorCidade = new HashMap<>();
-
     public ServicoMetaweather() {
-        codigosPorCidade.put("Rio", "455825"); // Hardcoded enquanto nao tem um banco.
+        super.setCodigoCidade("Rio", "455825"); // Hardcoded enquanto nao tem um banco.
     }
 
     @Override
@@ -25,8 +20,7 @@ public class ServicoMetaweather extends Servico {
 
     @Override
     protected String montaURL(Cidade cidade) {
-        String codigoCidade = this.codigosPorCidade.get(cidade.getNome());
-        return "https://www.metaweather.com/api/location/" + codigoCidade;
+        return "https://www.metaweather.com/api/location/" + super.getCodigoCidade(cidade.getNome());
     }
 
     @Override
