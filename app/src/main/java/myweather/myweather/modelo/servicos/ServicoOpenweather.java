@@ -13,7 +13,7 @@ public class ServicoOpenweather extends Servico {
     }
 
     @Override
-    protected String getNome() {
+    public String getNome() {
         return "Openweather";
     }
 

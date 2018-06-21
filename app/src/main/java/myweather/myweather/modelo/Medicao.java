@@ -40,4 +40,14 @@ public class Medicao {
     public void setUmidadeAtual(Double umidadeAtual) {
         this.umidadeAtual = umidadeAtual;
     }
+
+    @Override
+    public String toString() {
+        return "Medicao{" +
+                "servicoOrigem=" + servicoOrigem.getNome() +
+                ", horaLeitura=" + horaLeitura +
+                ", temperaturaAtual=" + temperaturaAtual +
+                ", umidadeAtual=" + umidadeAtual +
+                '}';
+    }
 }

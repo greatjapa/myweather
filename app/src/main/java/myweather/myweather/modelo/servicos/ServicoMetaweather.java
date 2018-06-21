@@ -14,7 +14,7 @@ public class ServicoMetaweather extends Servico {
     }
 
     @Override
-    protected String getNome() {
+    public String getNome() {
         return "Metaweather";
     }
 

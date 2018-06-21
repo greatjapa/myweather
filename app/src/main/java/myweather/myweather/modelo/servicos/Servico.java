@@ -39,6 +39,7 @@ public abstract class Servico {
 
         try {
             this.alimentarMedicao(medicao, dados);
+            System.out.println(medicao.toString());
         } catch (JSONException e) {
             throw new IllegalStateException("Erro ao parsear JSON do "
                     + "servico " + this.getNome() + " para cidade " + cidade.getNome(), e);
@@ -61,7 +62,7 @@ public abstract class Servico {
         }
     }
 
-    protected abstract String getNome();
+    public abstract String getNome();
     protected abstract String montaURL(Cidade cidade);
     protected abstract void alimentarMedicao(Medicao medicao, JSONObject dados) throws JSONException;
 }
