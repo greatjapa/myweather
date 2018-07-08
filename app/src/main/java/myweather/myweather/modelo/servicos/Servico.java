@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import myweather.myweather.modelo.Medicao;
 import myweather.myweather.modelo.cidades.Cidade;
+import myweather.myweather.utils.Log;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -17,7 +18,7 @@ public abstract class Servico {
     private HashMap<String, String> codigosPorCidade = new HashMap<>();
 
     protected void setCodigoCidade(String nomeCidade, String codigo) {
-        this.codigosPorCidade.put(codigo, nomeCidade);
+        this.codigosPorCidade.put(nomeCidade, codigo);
     }
 
     protected String getCodigoCidade(String nomeCidade) {
@@ -39,7 +40,7 @@ public abstract class Servico {
 
         try {
             this.alimentarMedicao(medicao, dados);
-            System.out.println(medicao.toString());
+            Log.debug(medicao.toString());
         } catch (JSONException e) {
             throw new IllegalStateException("Erro ao parsear JSON do "
                     + "servico " + this.getNome() + " para cidade " + cidade.getNome(), e);
@@ -50,7 +51,7 @@ public abstract class Servico {
 
     protected JSONObject invocar(Request request) {
         try {
-            System.out.println("Invocando servico " + request.url().toString());
+            Log.debug("Invocando servico " + request.url().toString());
             Response retorno = new OkHttpClient().newCall(request).execute();
             return new JSONObject(retorno.body().string());
         } catch(IOException e) {
